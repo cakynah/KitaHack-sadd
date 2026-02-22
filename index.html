@@ -378,6 +378,18 @@
     // Access data from data.js global script
     const { quizData, lessonsData, aiResponses } = window;
 
+    // Global variable to store chat history for Gemini
+    let geminiChatHistory = [
+      {
+        role: "user",
+        parts: [{ text: "You are Cikgu Leo, a friendly and encouraging Malaysian teacher. Use a mix of Bahasa Melayu and English (Manglish). Your goal is to help students learn. Always ask them one question at a time to test their knowledge, wait for their answer, provide feedback, and then ask the next question." }]
+      },
+      {
+        role: "model",
+        parts: [{ text: "Hebat! Saya Cikgu Leo 🦁. Jom kita mula belajar! Adakah kamu sudah sedia untuk soalan pertama?" }]
+      }
+    ];
+
     // Your web app's Firebase configuration
     const firebaseConfig = {
       apiKey: "AIzaSyDNNsUsVgdnKAl0WLExFxXonb9Ncuy7Zuc",
@@ -534,6 +546,7 @@
     }
 
     function goToHome() {
+      console.log("Going home...");
       showScreen('screen-home');
       initQuiz();
       loadProgress();
@@ -702,87 +715,51 @@
       const input = document.getElementById('chat-input');
       const msg = input.value.trim();
       if (!msg) return;
-      input.value = '';
-      addBubble(msg, 'user');
 
-      const typingId = 'typing-' + Date.now();
-      const typingRow = document.createElement('div');
-      typingRow.className = 'bubble-row';
-      typingRow.id = typingId;
-      typingRow.innerHTML = `<div class="ai-avatar">🦁</div><div class="chat-bubble bubble-ai"><div class="typing-indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div></div>`;
-      document.getElementById('chat-messages').appendChild(typingRow);
-      scrollChat();
+      // 1. Add User Bubble to UI
+      addBubble(msg, 'user');
+      input.value = '';
+
+      // 2. Push User Message to History
+      geminiChatHistory.push({
+        role: "user",
+        parts: [{ text: msg }]
+      });
+
+      const API_KEY = "AIzaSyD3aFUMgxo0HGkdY0APNMgeZWFxeRiKtc0";
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`;
 
       try {
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`, {
+        const response = await fetch(url, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            contents: [{
-              parts: [{
-                text: `You are Cikgu Leo, a friendly AI tutor for kids aged 7-9 in Malaysia. Answer in simple ${currentLang === 'bm' ? 'BM' : 'English'}. Be encouraging. User: "${msg}"`
-              }]
-            }]
+            contents: geminiChatHistory // We send the WHOLE history here
           })
         });
 
-        if (!response.ok) {
-          const errData = await response.json();
-          console.error("Gemini Response Not OK:", response.status, errData);
-
-          if (response.status === 429) {
-            throw new Error("QUOTA_EXCEEDED");
-          }
-          throw new Error(errData.error?.message || `API Status ${response.status}`);
-        }
+        if (response.status === 429) throw new Error("QUOTA_EXCEEDED");
+        if (!response.ok) throw new Error("OFFLINE_OR_ERROR");
 
         const data = await response.json();
-        console.log("Gemini Response Data:", data);
+        const aiText = data.candidates[0].content.parts[0].text;
 
-        const aiText = data.candidates?.[0]?.content?.parts?.[0]?.text;
-        if (!aiText) {
-          console.warn("Gemini returned empty or unexpected structure:", data);
-          throw new Error("No response from AI");
-        }
+        // 3. Push Model Response to History (so it remembers for the next turn)
+        geminiChatHistory.push({
+          role: "model",
+          parts: [{ text: aiText }]
+        });
 
-        document.getElementById(typingId)?.remove();
         addBubble(aiText, 'ai');
 
       } catch (error) {
-        console.error("Chatbot Error:", error);
-        document.getElementById(typingId)?.remove();
+        console.error("Chat Error:", error);
 
-        // Local Fallback Logic
-        let fallbackMsg = "";
-        const lowerMsg = msg.toLowerCase();
+        // 4. Fallback to your local data.js responses if API fails
+        const fallbacks = window.aiResponses?.[currentLang] || ["Maaf, Cikgu penat sikit. Jom cuba lagi nanti!"];
+        const randomFallback = fallbacks[Math.floor(Math.random() * fallbacks.length)];
 
-        // Try to find a match in local data
-        if (currentLang === 'bm') {
-          if (lowerMsg.includes('apa khabar')) fallbackMsg = "Khabar baik! Saya sentiasa ceria untuk belajar bersama anda! 😊";
-          else if (lowerMsg.includes('hai') || lowerMsg.includes('hello')) fallbackMsg = "Hai kawan! Mari kita belajar sesuatu yang hebat hari ini! 🦁";
-          else if (lowerMsg.includes('terima kasih')) fallbackMsg = "Sama-sama! Anda memang hebat! ✨";
-          else {
-            // Pick a random general response from data.js
-            fallbackMsg = aiResponses.bm[Math.floor(Math.random() * aiResponses.bm.length)];
-          }
-        } else {
-          if (lowerMsg.includes('how are you')) fallbackMsg = "I'm doing great! Always happy to learn with you! 😊";
-          else if (lowerMsg.includes('hi') || lowerMsg.includes('hello')) fallbackMsg = "Hi friend! Let's learn something amazing today! 🦁";
-          else if (lowerMsg.includes('thank you')) fallbackMsg = "You're welcome! You're doing a fantastic job! ✨";
-          else {
-            // Pick a random general response from data.js
-            fallbackMsg = aiResponses.bi[Math.floor(Math.random() * aiResponses.bi.length)];
-          }
-        }
-
-        if (error.message === "QUOTA_EXCEEDED") {
-          const quotaPrefix = currentLang === 'bm'
-            ? "Wah, ramai betul kawan-kawan sedang bertanya sekarang! 🦁 Saya perlu berehat kejap. Sementara tu, ini jawapan saya: \n\n"
-            : "Wow, so many friends are asking questions right now! 🦁 I need a tiny break. In the meantime, here is my answer: \n\n";
-          addBubble(quotaPrefix + fallbackMsg, 'ai');
-        } else {
-          addBubble(fallbackMsg, 'ai');
-        }
+        addBubble(randomFallback + " (Offline Mode 🦁)", 'ai');
       }
     }
 
