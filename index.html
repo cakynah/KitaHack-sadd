@@ -12,10 +12,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="index.css" />
-  <style>
-    .screen { display: none !important; }
-    .screen.active { display: flex !important; }
-  </style>
 </head>
 
 <body>
@@ -47,7 +43,7 @@
   <div id="screen-home" class="screen">
     <!-- Top Bar -->
     <div class="topbar">
-      <div class="topbar-logo" onclick="showScreen('screen-home')" style="cursor:pointer">🦁 BelajarKu</div>
+      <div class="topbar-logo">🦁 BelajarKu</div>
       <div class="lang-toggle">
         <button class="lang-btn active" id="lang-bm" onclick="setLang('bm')">BM</button>
         <button class="lang-btn" id="lang-bi" onclick="setLang('bi')">BI</button>
@@ -130,7 +126,7 @@
   <!-- ========== SUBJECTS SCREEN ========== -->
   <div id="screen-subjects" class="screen">
     <div class="topbar">
-      <div class="topbar-logo" onclick="showScreen('screen-home')" style="cursor:pointer">🦁 BelajarKu</div>
+      <div class="topbar-logo">🦁 BelajarKu</div>
       <div class="lang-toggle">
         <button class="lang-btn active" onclick="setLang('bm')">BM</button>
         <button class="lang-btn" onclick="setLang('bi')">BI</button>
@@ -148,26 +144,27 @@
       <div class="subject-card bm" onclick="chooseSubject('bm')">
         <div class="subject-icon">🇲🇾</div>
         <div class="subject-name" data-bm="Bahasa Melayu" data-bi="Bahasa Melayu">Bahasa Melayu</div>
-        <div class="subject-level">Tahap 1 • 8 Modul</div>
+        <div class="subject-level" data-bm="Tahap 1 • 8 Modul" data-bi="Level 1 • 8 Modules"></div>
       </div>
 
       <div class="subject-card bi" onclick="chooseSubject('bi')">
         <div class="subject-icon">🇬🇧</div>
         <div class="subject-name">English</div>
-        <div class="subject-level">Level 1 • 8 Modules</div>
+        <div class="subject-level" data-bm="Tahap 1 • 8 Modul" data-bi="Level 1 • 8 Modules"></div>
       </div>
 
       <div class="subject-card math" onclick="chooseSubject('math')">
         <div class="subject-icon">🔢</div>
         <div class="subject-name" data-bm="Matematik" data-bi="Mathematics">Matematik</div>
-        <div class="subject-level">Tahap 1 • 10 Modul</div>
+        <div class="subject-level" data-bm="Tahap 1 • 10 Modul" data-bi="Level 1 • 10 Modules"></div>
       </div>
 
       <div class="subject-card science" onclick="chooseSubject('science')">
         <div class="subject-icon">🔬</div>
         <div class="subject-name" data-bm="Sains" data-bi="Science">Sains</div>
-        <div class="subject-level">Tahap 1 • 6 Modul</div>
+        <div class="subject-level" data-bm="Tahap 1 • 6 Modul" data-bi="Level 1 • 6 Modules"></div>
       </div>
+    </div>
     </div>
   </div>
 
@@ -175,7 +172,7 @@
   <!-- ========== STANDARDS SCREEN (NEW) ========== -->
   <div id="screen-standards" class="screen">
     <div class="topbar">
-      <div class="topbar-logo" onclick="showScreen('screen-home')" style="cursor:pointer">🦁 BelajarKu</div>
+      <div class="topbar-logo">🦁 BelajarKu</div>
       <div class="lang-toggle">
         <button class="lang-btn active" onclick="setLang('bm')">BM</button>
         <button class="lang-btn" onclick="setLang('bi')">BI</button>
@@ -210,7 +207,7 @@
 
   <div id="screen-lessons" class="screen">
     <div class="topbar">
-      <div class="topbar-logo" onclick="showScreen('screen-home')" style="cursor:pointer">🦁 BelajarKu</div>
+      <div class="topbar-logo">🦁 BelajarKu</div>
       <div class="lang-toggle">
         <button class="lang-btn active" onclick="setLang('bm')">BM</button>
         <button class="lang-btn" onclick="setLang('bi')">BI</button>
@@ -233,7 +230,7 @@
   <!-- ========== LESSON CONTENT SCREEN ========== -->
   <div id="screen-lesson-content" class="screen">
     <div class="topbar">
-      <div class="topbar-logo" onclick="showScreen('screen-home')" style="cursor:pointer">🦁 BelajarKu</div>
+      <div class="topbar-logo">🦁 BelajarKu</div>
       <div class="lang-toggle">
         <button class="lang-btn active" onclick="setLang('bm')">BM</button>
         <button class="lang-btn" onclick="setLang('bi')">BI</button>
@@ -270,7 +267,7 @@
   <!-- ========== QUIZ SCREEN ========== -->
   <div id="screen-quiz" class="screen">
     <div class="topbar">
-      <div class="topbar-logo" onclick="showScreen('screen-home')" style="cursor:pointer">🦁 BelajarKu</div>
+      <div class="topbar-logo">🦁 BelajarKu</div>
       <div class="lang-toggle">
         <button class="lang-btn active" onclick="setLang('bm')">BM</button>
         <button class="lang-btn" onclick="setLang('bi')">BI</button>
@@ -324,7 +321,7 @@
   <!-- ========== CHAT SCREEN ========== -->
   <div id="screen-chat" class="screen">
     <div class="topbar">
-      <div class="topbar-logo" onclick="showScreen('screen-home')" style="cursor:pointer">🦁 BelajarKu</div>
+      <div class="topbar-logo">🦁 BelajarKu</div>
       <div class="lang-toggle">
         <button class="lang-btn active" onclick="setLang('bm')">BM</button>
         <button class="lang-btn" onclick="setLang('bi')">BI</button>
@@ -379,8 +376,14 @@
     import { initializeFirestore, persistentLocalCache, persistentMultipleTabManager, doc, setDoc, getDoc, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
     import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
-    // Access data from data.js global script
-    const { quizData, lessonsData, aiResponses } = window;
+    try {
+      // Access data from data.js global script
+      const { quizData, lessonsData, aiResponses } = window;
+      
+      if (!quizData) {
+        console.error('❌ data.js did not load properly. Check browser console.');
+        throw new Error('data.js failed to load');
+      }
 
     // Global variable to store chat history for Gemini
     let geminiChatHistory = [
@@ -418,15 +421,23 @@
 
     console.log('BelajarKu Script Loading (Firebase Active)...');
 
+    // Detect localhost for development mode
+    const isLocalhost = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+    if (isLocalhost) {
+      console.log('🔧 Development mode detected (localhost). Using localStorage with Firebase fallback.');
+    }
+
     // ======== STATE ========
     let userId = null;
     let currentLang = 'bm';
-    let currentScore = 0;
+    let currentScore = 0; // Persistent account score
+    let quizSessionScore = 0; // Score for current quiz session only
     let currentQ = 0;
     let answered = false;
     let selectedSubject = '';
     let selectedStandard = '';
     let savedLessons = []; // In-memory array: [{title, std, subject, index}]
+    let currentLessonInfo = null; // Stores {std, subject, index} for current lesson being viewed
     const GEMINI_API_KEY = '[GEMINI_API_KEY]';
 
     // Auth & Persistence Logic
@@ -435,7 +446,11 @@
         userId = user.uid;
         loadProgress();
       } else {
-        signInAnonymously(auth).catch((err) => console.error("Auth failed", err));
+        signInAnonymously(auth).catch((err) => {
+          console.warn("Auth failed (localhost may not be authorized in Firebase):", err);
+          // Still load from localStorage on localhost
+          loadProgress();
+        });
       }
     });
 
@@ -445,7 +460,11 @@
       localStorage.setItem('belajarku_score', currentScore);
       localStorage.setItem('belajarku_saved_lessons', JSON.stringify(savedLessons));
 
-      if (!userId) return;
+      // Skip Firebase on localhost if auth failed
+      if (!userId || isLocalhost) {
+        console.log('📱 Progress saved to localStorage');
+        return;
+      }
 
       try {
         await setDoc(doc(db, "userProfiles", userId), {
@@ -465,6 +484,15 @@
       const localSaved = JSON.parse(localStorage.getItem('belajarku_saved_lessons') || '[]');
       if (localScore !== null) currentScore = parseInt(localScore);
       savedLessons = localSaved;
+
+      // Skip Firestore on localhost if no userId
+      if (!userId || isLocalhost) {
+        console.log('📱 Progress loaded from localStorage');
+        document.getElementById('quiz-score').textContent = `⭐ ${currentScore} ${currentLang === 'bm' ? 'mata' : 'pts'}`;
+        updateHomeMarks();
+        renderFavourites();
+        return;
+      }
 
       if (userId) {
         try {
@@ -541,6 +569,14 @@
       return fallback;
     }
 
+    // Helper function to get translated text
+    function getLangText(field) {
+      if (typeof field === 'object' && field !== null) {
+        return field[currentLang] || field['bm'] || '';
+      }
+      return field || '';
+    }
+
     // ======== NAVIGATION ========
     function showScreen(id) {
       document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
@@ -570,7 +606,7 @@
       const data = await fetchLessons(selectedStandard, selectedSubject);
       if (!data) return;
 
-      document.getElementById('lessons-title').textContent = data.title;
+      document.getElementById('lessons-title').textContent = getLangText(data.title);
       const container = document.getElementById('lessons-container');
       container.innerHTML = '';
 
@@ -580,14 +616,14 @@
           <div class="lesson-card ${i === 0 ? 'active' : ''}" onclick="openLesson('${selectedStandard}', '${selectedSubject}', ${i})">
             <div class="lesson-card-img ${card.bg}">${card.emoji}</div>
             <div class="lesson-card-body">
-              <div class="lesson-tag">${card.tag}</div>
-              <div class="lesson-title">${card.title}</div>
-              <div class="lesson-desc">${card.desc}</div>
+              <div class="lesson-tag">${getLangText(card.tag)}</div>
+              <div class="lesson-title">${getLangText(card.title)}</div>
+              <div class="lesson-desc">${getLangText(card.desc)}</div>
             </div>
             <div class="lesson-footer">
               <div class="lesson-meta">
                 <span>⏱ ${card.time}</span>
-                <span>📊 ${card.level}</span>
+                <span>📊 ${getLangText(card.level)}</span>
               </div>
               <button class="save-btn ${isSaved ? 'saved' : ''}" data-title="${card.title}" data-std="${selectedStandard}" data-subject="${selectedSubject}" data-index="${i}" onclick="event.stopPropagation(); saveLesson(this, '${card.title}')" aria-label="Simpan ke kegemaran">
                 ${isSaved ? '⭐ <span data-bm="Kegemaran!" data-bi="Favourited!">Kegemaran!</span>' : '☆ <span data-bm="Tambah Kegemaran" data-bi="Add to Favourites">Tambah Kegemaran</span>'}
@@ -603,14 +639,20 @@
 
     function openLesson(std, subject, index) {
       const card = lessonsData[std][subject].cards[index];
-      document.getElementById('lesson-content-title').textContent = card.title;
-      document.getElementById('lesson-content-subtitle').textContent = card.tag;
+      // Store current lesson info for language toggle
+      currentLessonInfo = {std, subject, index};
+      document.getElementById('lesson-content-title').textContent = getLangText(card.title);
+      document.getElementById('lesson-content-subtitle').textContent = getLangText(card.tag);
       document.getElementById('lesson-visual').textContent = card.emoji;
       document.getElementById('lesson-text').innerHTML = currentLang === 'bm' ? card.content : card.content_bi;
 
-      document.getElementById('lesson-content-back').onclick = () => showLessons();
+      document.getElementById('lesson-content-back').onclick = () => {
+        currentLessonInfo = null;
+        showLessons();
+      };
       document.getElementById('lesson-complete-btn').onclick = () => {
         showToast(currentLang === 'bm' ? '🌟 Syabas! Pelajaran selesai!' : '🌟 Well done! Lesson complete!');
+        currentLessonInfo = null;
         showLessons();
       };
 
@@ -685,6 +727,42 @@
       });
       const mascotMsg = document.getElementById('quiz-mascot-msg');
       if (mascotMsg) mascotMsg.textContent = mascotMsg.dataset[lang];
+      
+      // Update lesson list if currently viewing lessons
+      const lessonsContainer = document.getElementById('lessons-container');
+      if (lessonsContainer && lessonsContainer.children.length > 0) {
+        const lessonsTitle = document.getElementById('lessons-title');
+        const data = lessonsData[selectedStandard]?.[selectedSubject];
+        if (data) {
+          lessonsTitle.textContent = getLangText(data.title);
+          // Update all lesson cards
+          document.querySelectorAll('.lesson-tag').forEach((tagEl, idx) => {
+            const card = data.cards[idx];
+            if (card) {
+              tagEl.textContent = getLangText(card.tag);
+              tagEl.nextElementSibling.textContent = getLangText(card.title);
+              tagEl.nextElementSibling.nextElementSibling.textContent = getLangText(card.desc);
+            }
+          });
+          // Update level in lesson footer
+          document.querySelectorAll('.lesson-meta').forEach((metaEl, idx) => {
+            const card = data.cards[idx];
+            if (card) {
+              const spans = metaEl.querySelectorAll('span');
+              if (spans[1]) spans[1].textContent = `📊 ${getLangText(card.level)}`;
+            }
+          });
+        }
+      }
+      
+      // Update lesson content if currently viewing a lesson
+      if (currentLessonInfo) {
+        const {std, subject, index} = currentLessonInfo;
+        const card = lessonsData[std][subject].cards[index];
+        document.getElementById('lesson-content-title').textContent = getLangText(card.title);
+        document.getElementById('lesson-content-subtitle').textContent = getLangText(card.tag);
+        document.getElementById('lesson-text').innerHTML = lang === 'bm' ? card.content : card.content_bi;
+      }
 
       const qs = document.getElementById('quick-questions');
       if (qs) {
@@ -708,6 +786,12 @@
       }
       renderQuiz();
       updateHomeMarks();
+      
+      // Update quiz end screen if currently viewing it
+      const quizScreen = document.getElementById('screen-quiz');
+      if (quizScreen && quizScreen.classList.contains('active') && currentQ >= quizData.length) {
+        showQuizEnd();
+      }
     }
 
     // ======== CHAT ========
@@ -794,6 +878,7 @@
     // ======== QUIZ ========
     function initQuiz() {
       currentQ = 0; answered = false;
+      quizSessionScore = 0; // Reset session score for new quiz
       renderQuiz();
     }
 
@@ -803,7 +888,7 @@
       const lang = currentLang;
       answered = false;
       document.getElementById('quiz-no').textContent = `${lang === 'bm' ? 'Soalan' : 'Question'} ${currentQ + 1} / ${quizData.length}`;
-      document.getElementById('quiz-score').textContent = `⭐ ${currentScore} ${lang === 'bm' ? 'mata' : 'pts'}`;
+      document.getElementById('quiz-score').textContent = `⭐ ${quizSessionScore} ${lang === 'bm' ? 'mata' : 'pts'}`;
       document.getElementById('quiz-progress').style.width = `${((currentQ + 1) / quizData.length) * 100}%`;
       document.getElementById('quiz-img').textContent = q.img;
       document.getElementById('quiz-img').className = `quiz-question-img ${q.imgBg}`;
@@ -823,7 +908,8 @@
       const feedback = document.getElementById('quiz-feedback');
       if (idx === q.correct) {
         opts[idx].classList.add('correct');
-        currentScore += 10;
+        quizSessionScore += 10; // Increment session score
+        currentScore += 10; // Also increment account total
         saveProgress();
         feedback.textContent = currentLang === 'bm' ? '🎉 Betul!' : '🎉 Correct!';
         feedback.className = 'quiz-feedback show correct';
@@ -833,7 +919,7 @@
         feedback.textContent = currentLang === 'bm' ? '😅 Cuba lagi!' : '😅 Try again!';
         feedback.className = 'quiz-feedback show wrong';
       }
-      document.getElementById('quiz-score').textContent = `⭐ ${currentScore} ${currentLang === 'bm' ? 'mata' : 'pts'}`;
+      document.getElementById('quiz-score').textContent = `⭐ ${quizSessionScore} ${currentLang === 'bm' ? 'mata' : 'pts'}`;
       updateHomeMarks();
       document.getElementById('btn-next').className = 'btn-next show';
     }
@@ -845,9 +931,24 @@
 
     function showQuizEnd() {
       const lang = currentLang;
-      document.getElementById('quiz-question').textContent = lang === 'bm' ? `🏆 Kamu dapat ${currentScore} mata!` : `🏆 You got ${currentScore} pts!`;
+      // Display session score only (not total account score)
+      const sessionMsg = lang === 'bm' 
+        ? `🏆 Kamu dapat ${quizSessionScore} mata dalam cabaran ini!` 
+        : `🏆 You got ${quizSessionScore} pts in this challenge!`;
+      const totalMsg = lang === 'bm'
+        ? `📊 Jumlah keseluruhan: ${currentScore} mata`
+        : `📊 Total account: ${currentScore} pts`;
+      
+      document.getElementById('quiz-question').textContent = sessionMsg;
       document.getElementById('quiz-img').textContent = '🏆';
-      document.getElementById('quiz-options').innerHTML = `<button class="quiz-option" style="grid-column:1/-1;background:var(--lime);color:var(--purple-dark)" onclick="initQuiz()">${lang === 'bm' ? '🔄 Main Semula' : '🔄 Play Again'}</button>`;
+      document.getElementById('quiz-options').innerHTML = `
+        <div style="grid-column:1/-1; text-align: center; margin: 15px 0; font-size: 14px; color: #666;">
+          ${totalMsg}
+        </div>
+        <button class="quiz-option" style="grid-column:1/-1;background:var(--lime);color:var(--purple-dark)" onclick="initQuiz()">
+          ${lang === 'bm' ? '🔄 Main Semula' : '🔄 Play Again'}
+        </button>
+      `;
     }
 
     // ======== TOAST & STATUS ========
@@ -904,6 +1005,23 @@
 
     renderFavourites();
     initQuiz();
+    } catch (error) {
+      console.error('🚨 Critical Error:', error);
+      document.body.innerHTML = `
+        <div style="padding: 20px; text-align: center; font-family: Arial;">
+          <h1>⚠️ Oops! Loading Error</h1>
+          <p>There's an issue loading the app. Please:</p>
+          <ol style="text-align: left; max-width: 400px; margin: 20px auto;">
+            <li>Check your internet connection</li>
+            <li>Refresh the page (Ctrl+R or Cmd+R)</li>
+            <li>Clear browser cache (Ctrl+Shift+Delete)</li>
+            <li>Try a different browser</li>
+          </ol>
+          <p><strong>Error:</strong> ${error.message}</p>
+          <button onclick="location.reload()" style="padding: 10px 20px; font-size: 16px; cursor: pointer;">🔄 Reload Page</button>
+        </div>
+      `;
+    }
   </script>
 </body>
 
