@@ -35,17 +35,17 @@ window.lessonsData = {
             title: '🇲🇾 Bahasa Melayu (Tahun 1)',
             cards: [
                 {
-                    emoji: '📝', bg: 'purple-bg', tag: 'Modul 1', title: 'Huruf & Ejaan',
-                    desc: 'Pelajari huruf abjad dan cara mengeja perkataan mudah.', time: '5 min', level: 'Mudah',
+                    emoji: '📝', bg: 'purple-bg', tag: {bm:'Modul 1', bi:'Module 1'}, title: 'Huruf & Ejaan',
+                    desc: {bm:'Pelajari huruf abjad dan cara mengeja perkataan mudah.', bi: 'Learn the letters of the alphabet and how to spell simple words.'}, time: '5 min', level:{bm:'Mudah',bi:'Easy'},
                     content: '<p>Mari belajar abjad A-Z! A untuk Ayam Gepuk 🐓, B untuk Bola ⚽.</p>',
-                    content_bi: '<p>Let\'s learn A-Z! A for Apple 🍎, B for Ball ⚽.</p>'
+                    content_bi: '<p>Let\'s learn A-Z! A for Apel 🍎, B for Bola ⚽.</p>'
                 },
 
                 {
-                    emoji: '📝', bg: 'purple-bg', tag: 'Modul 2', title: 'ABC',
-                    desc: 'Pelajari huruf abjad dan cara mengeja perkataan mudah.', time: '5 min', level: 'Mudah',
+                    emoji: '📝', bg: 'purple-bg', tag: {bm:'Modul 2', bi:'Module 2'}, title: 'ABC',
+                    desc: {bm :'Pelajari huruf abjad dan cara mengeja perkataan mudah.',bi:'Learn the letters of the alphabet and how to spell simple words.'}, time: '5 min', level:{bm:'Mudah',bi:'Easy'},
                     content: '<p>Mari belajar abjad A-Z! A untuk Ayam Gepuk 🐓, B untuk Bola ⚽.</p>',
-                    content_bi: '<p>Let\'s learn A-Z! A for Apple 🍎, B for Ball ⚽.</p>'
+                    content_bi: '<p>Let\'s learn A-Z! A for Apel 🍎, B for Bola ⚽.</p>'
                 }
             ]
         },
@@ -53,30 +53,30 @@ window.lessonsData = {
             title: '🇬🇧 English (Standard 1)',
             cards: [
                 {
-                    emoji: '🔤', bg: 'blue-bg', tag: 'Module 1', title: 'Alphabet Fun',
-                    desc: 'Learn A to Z with pictures.', time: '5 min', level: 'Easy',
-                    content: '<p>Capital letters: A B C D...</p>',
+                    emoji: '🔤', bg: 'blue-bg', tag: {bm:'Modul 1', bi:'Module 1'}, title: 'Alphabet Fun',
+                    desc: {bm:'Belajar A hingga Z dengan gambar.',bi:'Learn A to Z with pictures.'}, time: '5 min', level: {bm:'Mudah', bi:'Easy'},
+                    content: '<p>Huruf besar: A B C D...</p>',
                     content_bi: '<p>Capital letters: A B C D...</p>'
                 }
             ]
         },
         math: {
-            title: '🔢 Matematik (Tahun 1)',
+            title: {bm: '🔢 Matematik (Tahun 1)', bi: '🔢 Mathematics (Standard 1)'},
             cards: [
                 {
-                    emoji: '➕', bg: 'lime-bg', tag: 'Modul 1', title: 'Tambah 1-10',
-                    desc: 'Asas tambah nombor kecil.', time: '6 min', level: 'Mudah',
+                    emoji: '➕', bg: 'lime-bg', tag: {bm:'Modul 1', bi:'Module 1'}, title: {bm:'Tambah 1-10', bi:'Add 1-10'},
+                    desc: {bm:'Asas tambah nombor kecil.',bi:'Basic addition of small numbers.'}, time: '6 min', level: {bm:'Mudah', bi:'Easy'},
                     content: '<p>1 + 1 = 2 🍎 + 🍎 = 🍎🍎</p>',
                     content_bi: '<p>1 + 1 = 2 🍎 + 🍎 = 🍎🍎</p>'
                 }
             ]
         },
         science: {
-            title: '🔬 Sains (Tahun 1)',
+            title: {bm: '🔬 Sains (Tahun 1)', bi:'🔬 Science (Standard 1)'},
             cards: [
                 {
-                    emoji: '🌱', bg: 'lime-bg', tag: 'Modul 1', title: 'Benda Hidup',
-                    desc: 'Kenali benda hidup dan bukan hidup.', time: '7 min', level: 'Mudah',
+                    emoji: '🌱', bg: 'lime-bg', tag: {bm:'Modul 1', bi:'Module 1'}, title: 'Benda Hidup',
+                    desc: {bm:'Kenali benda hidup dan bukan hidup.', bi:'Identify living and non-living things'},time: '7 min', level: {bm:'Mudah',bi:'Easy'},
                     content: '<p>Benda hidup perlukan air, makanan dan udara. 🏃‍♂️💨</p>',
                     content_bi: '<p>Living things need water, food and air. 🏃‍♂️💨</p>'
                 }
@@ -88,8 +88,8 @@ window.lessonsData = {
             title: '🇲🇾 Bahasa Melayu (Tahun 2)',
             cards: [
                 {
-                    emoji: '📖', bg: 'blue-bg', tag: 'Modul 1', title: 'Ayat Mudah',
-                    desc: 'Belajar membina ayat pendek.', time: '8 min', level: 'Sederhana',
+                    emoji: '📖', bg: 'blue-bg', tag: {bm:'Modul 1', bi:'Module 1'}, title: 'Ayat Mudah',
+                    desc:{bm:'Belajar membina ayat pendek.',bi:'Learn to build short sentences.'}, time: '8 min', level:{bm:'Sederhana',bi:'Medium'},
                     content: '<p>Contoh: Saya suka main bola. ⚽</p>',
                     content_bi: '<p>Example: I like to play ball. ⚽</p>'
                 }
@@ -99,30 +99,30 @@ window.lessonsData = {
             title: '🇬🇧 English (Standard 2)',
             cards: [
                 {
-                    emoji: '💬', bg: 'purple-bg', tag: 'Module 1', title: 'Greetings',
-                    desc: 'Say hello in different ways.', time: '8 min', level: 'Medium',
+                    emoji: '💬', bg: 'purple-bg', tag: {bm:'Modul 1', bi:'Module 1'}, title: 'Greetings',
+                    desc:{bm:'Cakap helo dengan bahasa yang berbeza.',bi:'Say hello in different ways.'}, time: '8 min', level:{bm:'Sederhana',bi:'Medium'},
                     content: '<p>Good morning! Good afternoon!</p>',
                     content_bi: '<p>Good morning! Good afternoon!</p>'
                 }
             ]
         },
         math: {
-            title: '🔢 Matematik (Tahun 2)',
+            title: {bm: '🔢 Matematik (Tahun 2)', bi: '🔢 Mathematics (Standard 2)'},
             cards: [
                 {
-                    emoji: '🔢', bg: 'purple-bg', tag: 'Modul 1', title: 'Nombor hingga 100',
-                    desc: 'Kira dan tulis nombor.', time: '10 min', level: 'Sederhana',
+                    emoji: '🔢', bg: 'purple-bg', tag: {bm:'Modul 1', bi:'Module 1'}, title:{bm:'Nombor hingga 100',bi:'Number until 100'},
+                    desc:{bm:'Kira dan tulis nombor.',bi:'Count and write numbers'},time: '10 min', level:{bm:'Sederhana',bi:'Medium'},
                     content: '<p>Mari kira 10, 20, 30... hingga 100!</p>',
                     content_bi: '<p>Let\'s count 10, 20, 30... to 100!</p>'
                 }
             ]
         },
         science: {
-            title: '🔬 Sains (Tahun 2)',
+            title: {bm:'🔬 Sains (Tahun 2)',bi:'🔬 Science (Standard 2)'},
             cards: [
                 {
-                    emoji: '🦁', bg: 'blue-bg', tag: 'Modul 1', title: 'Kitar Hidup',
-                    desc: 'Perjalanan hidup haiwan.', time: '8 min', level: 'Sederhana',
+                    emoji: '🦁', bg: 'blue-bg', tag: {bm:'Modul 1', bi:'Module 1'}, title:{bm:'Kitar Hidup',bi:'Life Cycle'},
+                    desc:{bm:'Perjalanan hidup haiwan.',bi:'Life journey of animals'}, time: '8 min', level:{bm:'Sederhana',bi:'Medium'},
                     content: '<p>Kitar hidup rama-rama: Telur -> Beluncas -> Kepompong -> Rama-rama 🦋</p>',
                     content_bi: '<p>Butterfly life cycle: Egg -> Caterpillar -> Pupa -> Butterfly 🦋</p>'
                 }
@@ -134,8 +134,8 @@ window.lessonsData = {
             title: '🇲🇾 Bahasa Melayu (Tahun 3)',
             cards: [
                 {
-                    emoji: '🗣️', bg: 'lime-bg', tag: 'Modul 1', title: 'Karangan Pendek',
-                    desc: 'Belajar tulis cerita ringkas.', time: '10 min', level: 'Sederhana',
+                    emoji: '🗣️', bg: 'lime-bg', tag: {bm:'Modul 1', bi:'Module 1'}, title: 'Karangan Pendek',
+                    desc: {bm:'Belajar tulis cerita ringkas.',bi:'Learn to write short stories.'}, time: '10 min', level:{bm:'Sederhana',bi:'Medium'},
                     content: '<p>Gunakan kata hubung seperti "dan" serta "tetapi".</p>',
                     content_bi: '<p>Use conjunctions like "and" and "but".</p>'
                 }
@@ -145,30 +145,30 @@ window.lessonsData = {
             title: '🇬🇧 English (Standard 3)',
             cards: [
                 {
-                    emoji: '📚', bg: 'yellow-bg', tag: 'Module 1', title: 'Reading Comprehension',
-                    desc: 'Read and answer questions.', time: '12 min', level: 'Hard',
+                    emoji: '📚', bg: 'yellow-bg', tag:{bm:'Modul 1', bi:'Module 1'}, title: 'Reading Comprehension',
+                    desc: {bm:'Baca dan jawab soalan',bi:'Read and answer questions.'}, time: '12 min', level:{bm:'Susah',bi:'Hard'},
                     content: '<p>Read the story of the Brave Lion. 🦁</p>',
                     content_bi: '<p>Read the story of the Brave Lion. 🦁</p>'
                 }
             ]
         },
         math: {
-            title: '✖️ Matematik (Tahun 3)',
+            title:{bm:'✖️ Matematik (Tahun 3)',bi:'✖️ Mathematics (Standard 3)'},
             cards: [
                 {
-                    emoji: '✖️', bg: 'purple-bg', tag: 'Modul 1', title: 'Asas Darab',
-                    desc: 'Belajar sifir mudah.', time: '10 min', level: 'Sederhana',
+                    emoji: '✖️', bg: 'purple-bg', tag:{bm:'Modul 1',bi:'Module 1'}, title:{bm:'Asas Darab',bi:'Basic Multiplication'},
+                    desc:{bm:'Belajar sifir mudah.', bi:'Learn easy multiplication'},time: '10 min', level:{bm:'Sederhana',bi:'Medium'},
                     content: '<p>2 x 2 = 4, 2 x 3 = 6...</p>',
                     content_bi: '<p>2 x 2 = 4, 2 x 3 = 6...</p>'
                 }
             ]
         },
         science: {
-            title: '🔬 Sains (Tahun 3)',
+            title:{bm:'🔬 Sains (Tahun 3)',bi:'🔬 Science (Standard 3)'},
             cards: [
                 {
-                    emoji: '🧲', bg: 'yellow-bg', tag: 'Modul 1', title: 'Magnet',
-                    desc: 'Kekuatan tarikan magnet.', time: '10 min', level: 'Sederhana',
+                    emoji: '🧲', bg: 'yellow-bg', tag:{bm:'Modul 1', bi:'Module 1'}, title: 'Magnet',
+                    desc:{bm:'Kekuatan tarikan magnet.',bi:'Strength of the magnet'}, time: '10 min', level:{bm:'Sederhana',bi:'Medium'},
                     content: '<p>Magnet ada kutub Utara dan Selatan. 🧲</p>',
                     content_bi: '<p>Magnets have North and South poles. 🧲</p>'
                 }
