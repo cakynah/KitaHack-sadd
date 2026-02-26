@@ -438,7 +438,7 @@
     let selectedStandard = '';
     let savedLessons = []; // In-memory array: [{title, std, subject, index}]
     let currentLessonInfo = null; // Stores {std, subject, index} for current lesson being viewed
-    const GEMINI_API_KEY = '[GEMINI_API_KEY]';
+    const GEMINI_API_KEY = 'AIzaSyD3aFUMgxo0HGkdY0APNMgeZWFxeRiKtc0';
 
     // Auth & Persistence Logic
     onAuthStateChanged(auth, (user) => {
@@ -625,7 +625,7 @@
                 <span>⏱ ${card.time}</span>
                 <span>📊 ${getLangText(card.level)}</span>
               </div>
-              <button class="save-btn ${isSaved ? 'saved' : ''}" data-title="${card.title}" data-std="${selectedStandard}" data-subject="${selectedSubject}" data-index="${i}" onclick="event.stopPropagation(); saveLesson(this, '${card.title}')" aria-label="Simpan ke kegemaran">
+              <button class="save-btn ${isSaved ? 'saved' : ''}" data-std="${selectedStandard}" data-subject="${selectedSubject}" data-index="${i}" onclick="event.stopPropagation(); saveLesson(this)" aria-label="Simpan ke kegemaran">
                 ${isSaved ? '⭐ <span data-bm="Kegemaran!" data-bi="Favourited!">Kegemaran!</span>' : '☆ <span data-bm="Tambah Kegemaran" data-bi="Add to Favourites">Tambah Kegemaran</span>'}
               </button>
             </div>
@@ -659,23 +659,34 @@
       showScreen('screen-lesson-content');
     }
 
-    function saveLesson(btn, title) {
+    function saveLesson(btn) {
       btn.classList.toggle('saved');
       const saved = btn.classList.contains('saved');
       const std = btn.getAttribute('data-std');
       const subject = btn.getAttribute('data-subject');
       const index = parseInt(btn.getAttribute('data-index'));
+      // compute title from lessonsData to avoid storing object/string confusion
+      let title = '';
+      try {
+        const card = lessonsData[std][subject].cards[index];
+        title = getLangText(card.title);
+      } catch (e) {
+        // fallback to blank
+        title = '';
+      }
 
       if (saved) {
-        // Add to in-memory array if not already there
-        const exists = savedLessons.some(s => s.title === title && s.std === std && s.subject === subject);
-        if (!exists) savedLessons.push({ title, std, subject, index });
+        // Add to in-memory array if not already there (compare by std/subject/index)
+        const exists = savedLessons.some(s => s.std === std && s.subject === subject && s.index === index);
+        if (!exists) savedLessons.push({ std, subject, index });
         btn.innerHTML = `⭐ <span data-bm="Kegemaran!" data-bi="Favourited!">Kegemaran!</span>`;
+        setLang(currentLang);
         showToast(currentLang === 'bm' ? `⭐ "${title}" ditambah ke Kegemaran!` : `⭐ "${title}" added to Favourites!`);
       } else {
         // Remove from in-memory array
-        savedLessons = savedLessons.filter(s => !(s.title === title && s.std === std && s.subject === subject));
+        savedLessons = savedLessons.filter(s => !(s.std === std && s.subject === subject && s.index === index));
         btn.innerHTML = `☆ <span data-bm="Tambah Kegemaran" data-bi="Add to Favourites">Tambah Kegemaran</span>`;
+        setLang(currentLang);
         showToast(currentLang === 'bm' ? `🗑️ "${title}" dibuang dari Kegemaran.` : `🗑️ "${title}" removed from Favourites.`);
       }
       saveProgress();
@@ -694,14 +705,19 @@
 
       section.style.display = 'block';
       list.innerHTML = savedLessons.map(item => {
-        const title = typeof item === 'object' ? item.title : item;
-        const navAttr = typeof item === 'object'
-          ? `onclick="goToFavLesson('${item.std}','${item.subject}',${item.index})"`
-          : '';
+        // item contains {std,subject,index}
+        let titleText = '';
+        try {
+          const card = lessonsData[item.std][item.subject].cards[item.index];
+          titleText = getLangText(card.title);
+        } catch {
+          titleText = '';
+        }
+        const navAttr = `onclick="goToFavLesson('${item.std}','${item.subject}',${item.index})"`;
         return `
           <div class="fav-chip" ${navAttr}>
             <span class="fav-chip-star">⭐</span>
-            <span class="fav-chip-title">${title}</span>
+            <span class="fav-chip-title">${titleText}</span>
           </div>
         `;
       }).join('');
@@ -814,7 +830,7 @@
         parts: [{ text: msg }]
       });
 
-      const API_KEY = "[GEMINI_API_KEY]";
+      const API_KEY = "AIzaSyD3aFUMgxo0HGkdY0APNMgeZWFxeRiKtc0";
       const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`;
 
       try {
