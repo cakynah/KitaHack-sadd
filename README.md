@@ -3,7 +3,7 @@
 📚 Belajarku
 
 Belajarku is a Progressive Web App (PWA) designed for interactive learning. It combines a clean UI, offline support, quizzes, and AI-powered features via the Gemini API. The app is hosted on Netlify:  
-👉 Live Demo
+👉 https://sage-bombolone-ce281a.netlify.app/
 
 ---
 
