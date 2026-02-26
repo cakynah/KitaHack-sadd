@@ -438,7 +438,7 @@
     let selectedStandard = '';
     let savedLessons = []; // In-memory array: [{title, std, subject, index}]
     let currentLessonInfo = null; // Stores {std, subject, index} for current lesson being viewed
-    const GEMINI_API_KEY = 'AIzaSyD3aFUMgxo0HGkdY0APNMgeZWFxeRiKtc0';
+    const GEMINI_API_KEY = '[GEMINI_API_KEY]';
 
     // Auth & Persistence Logic
     onAuthStateChanged(auth, (user) => {
@@ -830,7 +830,8 @@
         parts: [{ text: msg }]
       });
 
-      const API_KEY = "AIzaSyD3aFUMgxo0HGkdY0APNMgeZWFxeRiKtc0";
+      // Input Gemini API Key here
+      const API_KEY = "[GEMINI_API_KEY]"; 
       const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`;
 
       try {
