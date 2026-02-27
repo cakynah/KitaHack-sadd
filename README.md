@@ -12,7 +12,7 @@ The app is currently hosted on Netlify (No AI chatbot functionality yet. To use 
 
 Project description PDF:
 
-👉 https://drive.google.com/file/d/1W_wQAPvkfmVcT5n-nun8HAhU1jRS8qoI/view?usp=drive_link
+👉https://drive.google.com/file/d/1LO_-h1uVo4xmnfXfDIX7RH4CmaPkFSYP/view?usp=drive_link
 
 ---
 
