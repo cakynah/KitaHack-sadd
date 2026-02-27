@@ -7,9 +7,9 @@ BelajarKu is a Progressive Web App (PWA) designed to provide interactive digital
 The app is hosted on Netlify (No AI chatbot functionality yet. To use the AI Chatbot, please follow developer setup below⬇️):  
 👉 https://saddbelajarku.netlify.app/
 
-
 Project description PDF:
 👉 https://drive.google.com/file/d/1W_wQAPvkfmVcT5n-nun8HAhU1jRS8qoI/view?usp=drive_link
+
 ---
 
 🤔 Problem Statement:
