@@ -52,7 +52,7 @@ Follow these steps to run Belajarku locally:
 
 3. Insert your Gemini API key  
    - Open index.html  
-   - Go to line 835  
+   - Go to line 837 
    - Replace the placeholder with your Gemini API key:
      `javascript
      const GEMINIAPIKEY = "your-api-key-here";
