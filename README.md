@@ -64,7 +64,7 @@ Follow these steps to run Belajarku locally:
 
 1. Clone the repository
    `bash
-   git clone https://github.com/your-username/belajarku.git
+   git clone https://github.com/cakynuh/belajarku.git
    cd belajarku
    `
 
