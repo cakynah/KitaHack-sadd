@@ -2,7 +2,7 @@
 
 📚 Belajarku
 
-Belajarku is a Progressive Web App (PWA) designed for interactive learning. It combines a clean UI, offline support, quizzes, and AI-powered features via the Gemini API. The app is hosted on Netlify (No AI chatbot functionality):  
+Belajarku is a Progressive Web App (PWA) designed for interactive learning. It combines a clean UI, offline support, quizzes, and AI-powered features via the Gemini API. The app is hosted on Netlify (No AI chatbot functionality yet, for AI Chatbot, please follow developer setup below⬇️):  
 👉 https://saddbelajarku.netlify.app/
 
 
