@@ -5,10 +5,12 @@
 BelajarKu is a Progressive Web App (PWA) designed to provide interactive digital education for rural primary school students in Malaysia who lack reliable internet and updated resources. The project addresses the problem of educational inequality caused by intermittent connectivity and limited access to qualified tutoring. Its purpose is to deliver structured learning materials, quizzes, and an AI tutor named "Cikgu Leo" that remains functional even in low-bandwidth or offline situations.
 
 The app is hosted on Netlify (No AI chatbot functionality yet. To use the AI Chatbot, please follow developer setup below⬇️):  
+
 👉 https://saddbelajarku.netlify.app/
 
 Project description PDF:
-\n👉 https://drive.google.com/file/d/1W_wQAPvkfmVcT5n-nun8HAhU1jRS8qoI/view?usp=drive_link
+
+👉 https://drive.google.com/file/d/1W_wQAPvkfmVcT5n-nun8HAhU1jRS8qoI/view?usp=drive_link
 
 ---
 
