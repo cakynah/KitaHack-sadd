@@ -29,6 +29,7 @@ To provide digital education for students in rural areas by providing a PWA that
 The app uses the Gemini 2.5 Flash API for real-time tutoring. To ensure resilience, it features a Local Chat Fallback using keyword matching in data.js to provide offline AI-powered assistance when a cloud connection is unavailable.
 
 😃 Alignment with SDG: 
+
 SDG 4 (Quality Education): BelajarKu supports Target 4.1 and 4.a by providing free, equitable access to lessons parsed into "scrollable cards," making high-quality content digestible and data-efficient for students.
 
 SDG 10 (Reduced Inequalities): By utilizing a lightweight Vanilla JS/CSS frontend and an offline-first architecture with Firestore LocalCache, the solution ensures that a student’s geography or lack of high-end hardware does not dictate their intellectual potential.
