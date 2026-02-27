@@ -12,6 +12,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="index.css" />
+  <style>
+    .screen { display: none !important; }
+    .screen.active { display: flex !important; }
+  </style>
 </head>
 
 <body>
@@ -43,7 +47,7 @@
   <div id="screen-home" class="screen">
     <!-- Top Bar -->
     <div class="topbar">
-      <div class="topbar-logo">🦁 BelajarKu</div>
+      <div class="topbar-logo" onclick="showScreen('screen-home')" style="cursor:pointer">🦁 BelajarKu</div>
       <div class="lang-toggle">
         <button class="lang-btn active" id="lang-bm" onclick="setLang('bm')">BM</button>
         <button class="lang-btn" id="lang-bi" onclick="setLang('bi')">BI</button>
@@ -126,7 +130,7 @@
   <!-- ========== SUBJECTS SCREEN ========== -->
   <div id="screen-subjects" class="screen">
     <div class="topbar">
-      <div class="topbar-logo">🦁 BelajarKu</div>
+      <div class="topbar-logo" onclick="showScreen('screen-home')" style="cursor:pointer">🦁 BelajarKu</div>
       <div class="lang-toggle">
         <button class="lang-btn active" onclick="setLang('bm')">BM</button>
         <button class="lang-btn" onclick="setLang('bi')">BI</button>
@@ -172,7 +176,7 @@
   <!-- ========== STANDARDS SCREEN (NEW) ========== -->
   <div id="screen-standards" class="screen">
     <div class="topbar">
-      <div class="topbar-logo">🦁 BelajarKu</div>
+      <div class="topbar-logo" onclick="showScreen('screen-home')" style="cursor:pointer">🦁 BelajarKu</div>
       <div class="lang-toggle">
         <button class="lang-btn active" onclick="setLang('bm')">BM</button>
         <button class="lang-btn" onclick="setLang('bi')">BI</button>
@@ -207,7 +211,7 @@
 
   <div id="screen-lessons" class="screen">
     <div class="topbar">
-      <div class="topbar-logo">🦁 BelajarKu</div>
+      <div class="topbar-logo" onclick="showScreen('screen-home')" style="cursor:pointer">🦁 BelajarKu</div>
       <div class="lang-toggle">
         <button class="lang-btn active" onclick="setLang('bm')">BM</button>
         <button class="lang-btn" onclick="setLang('bi')">BI</button>
@@ -230,7 +234,7 @@
   <!-- ========== LESSON CONTENT SCREEN ========== -->
   <div id="screen-lesson-content" class="screen">
     <div class="topbar">
-      <div class="topbar-logo">🦁 BelajarKu</div>
+      <div class="topbar-logo" onclick="showScreen('screen-home')" style="cursor:pointer">🦁 BelajarKu</div>
       <div class="lang-toggle">
         <button class="lang-btn active" onclick="setLang('bm')">BM</button>
         <button class="lang-btn" onclick="setLang('bi')">BI</button>
@@ -267,7 +271,7 @@
   <!-- ========== QUIZ SCREEN ========== -->
   <div id="screen-quiz" class="screen">
     <div class="topbar">
-      <div class="topbar-logo">🦁 BelajarKu</div>
+      <div class="topbar-logo" onclick="showScreen('screen-home')" style="cursor:pointer">🦁 BelajarKu</div>
       <div class="lang-toggle">
         <button class="lang-btn active" onclick="setLang('bm')">BM</button>
         <button class="lang-btn" onclick="setLang('bi')">BI</button>
@@ -321,7 +325,7 @@
   <!-- ========== CHAT SCREEN ========== -->
   <div id="screen-chat" class="screen">
     <div class="topbar">
-      <div class="topbar-logo">🦁 BelajarKu</div>
+      <div class="topbar-logo" onclick="showScreen('screen-home')" style="cursor:pointer">🦁 BelajarKu</div>
       <div class="lang-toggle">
         <button class="lang-btn active" onclick="setLang('bm')">BM</button>
         <button class="lang-btn" onclick="setLang('bi')">BI</button>
