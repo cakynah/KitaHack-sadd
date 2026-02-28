@@ -10,7 +10,7 @@ The app is currently hosted on Netlify (No AI chatbot functionality yet. To use 
 👉 https://saddbelajarku.netlify.app/
 
 
-Project description PDF:
+Project documentation PDF:
 
 👉https://drive.google.com/file/d/1LO_-h1uVo4xmnfXfDIX7RH4CmaPkFSYP/view?usp=drive_link
 
